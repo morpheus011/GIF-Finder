@@ -11,13 +11,19 @@
   gap: 1rem;
   padding: 0.5rem;
   width: 100%;
+  /* background-color: red; */
+
   max-width: 50em;
-  margin: 1rem auto;
+  margin: 0rem auto 2rem;
 }
 .search-box input{
-  padding: .5em;
+  padding: .8em 1em;
   border-radius: 0.5em;
+  /* font-size: 1.2rem; */
   font-weight: 400;
+}
+.search-box input:focus{
+  outline: none;
 }
 
 button {
@@ -27,7 +33,87 @@ button {
   color: #FCFFE7;
   border-radius: 0.5em;
   font-weight: 500;
+  /* font-size: 1.2rem; */
   text-transform: capitalize;
   cursor: pointer;
 }
 
+/* GIF Container */
+.gif-container{
+  /* background-color: red; */
+  display: grid;
+  grid-template-columns:  repeat(3,1fr);
+  gap: 2rem 2rem;
+  width: 100%;
+  /* height: 300px; */
+}
+.gif-cards{
+  border: 1px solid #000;
+  border: 1px solid rgb(88, 88, 48);
+  background-color: rgb(16, 9, 110);
+  border-radius: 10px;
+}
+
+.gif-cards > img{
+  width: 100%;
+  height: 250px;
+  padding: 1em;
+  border-radius: 25px;
+}
+
+.gif-cards > .copy-btn{
+  padding: .4rem 1rem;
+  margin: 0 1rem 1rem;
+}
+
+
+
+
+
+@media screen and (max-width:900px){
+  .gif-container{
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+@media screen and (max-width:520px) {
+    .main{
+      padding: 1rem;
+    }
+    .main > .search-box{
+      /* background-color: red; */
+      gap: .5em;
+      margin: 0 auto 1rem;
+      padding: 0.5rem 0;
+    }
+    .search-box input{
+      padding: .5em .5em;
+      /* width: 200px; */
+    }
+
+    .gif-container{
+      grid-template-columns: 1fr;
+  }
+}
+
+
+
+
+@media screen and (max-width:320px) {
+    .main{
+      padding: 1rem;
+    }
+    .main > .search-box{
+      gap: .5em;
+      margin: 0 auto 1rem;
+      padding: 0.5rem 0;
+    }
+    .search-box input{
+      padding: .5em .5em;
+      width: 200px;
+    }
+
+    .gif-container{
+      grid-template-columns: 1fr;
+  }
+}
