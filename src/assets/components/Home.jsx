@@ -6,10 +6,22 @@ import API_KEY from '../env/api-key'
 const Home = () => {
 
   const [gifs, setGifs] = useState([])
-  const [query, setQuery] = useState("sad");
+  const [query, setQuery] = useState("beautiful");
+
+  const handleChange = async (e) => {
+    console.log("Handle change");
+    console.log(e.target.value)
+    setQuery(e.target.value);
+    console.log(query)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(query)
+  }
 
 
-  const URL = `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${query}&limit=5&offset=0&rating=g&lang=en`;
+  const URL = `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${query}&limit=10&offset=0&rating=g&lang=en`;
 
   useEffect(() => {
     fetchGIF(URL);
@@ -34,17 +46,15 @@ const Home = () => {
   console.log(query)
   return (
     <div className="main">
-      <div className="search-box">
-        <input type="text" name="query" value={query} onChange={(e) => {
-          setQuery(e.target.value)
-        }} />
-        <button>search</button>
-      </div>
-      <h1>{ query}</h1>
+        <form action="" className="search-box">
+          <input type="text" name="query"  onChange={handleChange} />
+          <button onClick={handleSubmit}>Search</button>
+        </form>
+  
+      <h1>{query}</h1>
       <div className="gif-container">
         <Gif data={gifs} />
       </div>
-
     </div>
   );
 };
