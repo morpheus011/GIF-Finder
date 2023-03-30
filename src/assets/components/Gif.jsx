@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 const Gif = ({ data }) => {
+  const [copied, setcopied] = useState("")
   const copyURL = async (link) => {
     try {
       await navigator.clipboard.writeText(link);
@@ -13,7 +14,7 @@ const Gif = ({ data }) => {
 
   return (
     <>
-      {data.map((currGif) => {
+      {data.map((currGif, key) => {
         const { type, id, images } = currGif;
         return (
           <div className="gif-cards">
@@ -22,10 +23,10 @@ const Gif = ({ data }) => {
               className="copy-btn"
               onClick={(e) => {
                 copyURL(images.original.url);
+                setcopied(key)
               }}
             >
-              {" "}
-              Copy Link{" "}
+              {copied === key ? " Copied " : " Copy Link "}
             </button>
           </div>
         );
